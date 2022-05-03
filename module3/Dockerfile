@@ -7,7 +7,7 @@ ENV GO111MODULE=off \
 
 WORKDIR /module3
 COPY . .
-RUN go build -o httpserver .
+RUN go build -tags netgo -o httpserver .
 FROM scratch
 COPY --from=builder /module3/httpserver .
 EXPOSE 80
